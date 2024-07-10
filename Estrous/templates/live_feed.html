@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cow Estrous Monitoring Index - Live Feed</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #E6F4F1; /* Light Cyan */
+          color: #050402; /* Very Dark Brown */
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background-color: #F2CCB7; /* Light Peach */
+      }
+
+      .header .left-logo img {
+          width: 100px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .right-logo img {
+          width: 200px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .title {
+          flex: 1;
+          text-align: center;
+          font-size: 2em;
+          font-weight: bold;
+          color: #FFFFFF; /* White */
+      }
+
+      .content {
+          width: 80%;
+          max-width: 1200px;
+          margin-top: 20px;
+      }
+
+      .live-feed-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .live-feed {
+          width: 100%;
+          max-width: 800px;
+          height: 450px;
+          background-color: #F6A189; /* Light Orange */
+          border-radius: 15px; /* Rounded edges */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          overflow: hidden;
+      }
+
+      .live-feed img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 15px; /* Rounded edges */
+      }
+
+      .buttons {
+          display: flex;
+          gap: 10px;
+      }
+
+      .view-live-button {
+          padding: 10px 20px;
+          background-color: #A8E6A8; /* Subtle Green */
+          color: #FFFFFF; /* White */
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .stop-live-button {
+          padding: 10px 20px;
+          background-color: #E6A8A8; /* Subtle Red */
+          color: #FFFFFF; /* White */
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+  </style>
+</head>
+<body>
+  <div class="header">
+      <div class="left-logo">
+          <img src="{{ url_for('logo', filename='CGDT_logo.png') }}" alt="CGDT Logo">
+      </div>
+      <div class="title">
+          COW ESTROUS MONITORING INDEX
+      </div>
+      <div class="right-logo">
+          <img src="{{ url_for('logo', filename='Neer_Interactives_logo.png') }}" alt="Neer Interactives Logo">
+      </div>
+  </div>
+  <div class="content">
+      <div class="live-feed-container">
+          <div class="live-feed">
+              <img id="liveImage" src="#" alt="Live Feed">
+          </div>
+          <div class="buttons">
+              <button class="view-live-button" onclick="startLiveFeed()">View Live</button>
+              <button class="stop-live-button" onclick="stopLiveFeed()">Stop Feed</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+      function startLiveFeed() {
+          const liveImage = document.getElementById('liveImage');
+          liveImage.src = "{{ url_for('video_feed') }}";
+      }
+
+      function stopLiveFeed() {
+          const liveImage = document.getElementById('liveImage');
+          liveImage.src = "#";
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cow Estrous Monitoring Index</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #E6F4F1; /* Light Cyan */
+          color: #050402; /* Very Dark Brown */
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background-color: #F2CCB7; /* Light Peach */
+      }
+
+      .header .left-logo img {
+          width: 100px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .right-logo img {
+          width: 200px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .title {
+          flex: 1;
+          text-align: center;
+          font-size: 2em;
+          font-weight: bold;
+          color: #FFFFFF; /* White */
+      }
+
+      .content {
+          width: 80%;
+          max-width: 1200px;
+          margin-top: 20px;
+      }
+
+      .image-container {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+      }
+
+      .image-frame {
+          flex: 1;
+          margin: 0 10px;
+          padding: 20px;
+          background-color: #F6A189; /* Light Orange */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border-radius: 15px; /* Rounded edges */
+      }
+
+      .image-frame img, .image-frame video {
+          max-width: 100%;
+          border-radius: 15px; /* Rounded edges */
+      }
+
+      .image-frame label {
+          font-size: 1.2em;
+          margin-bottom: 10px;
+          color: #FFFFFF; /* White */
+      }
+
+      .upload-form {
+          margin-top: 20px;
+          text-align: center;
+      }
+
+      .upload-form input[type="file"] {
+          display: none;
+      }
+
+      .upload-form label {
+          font-size: 1em;
+          padding: 10px 20px;
+          background-color: #F6A189; /* Light Orange */
+          color: #FFFFFF; /* White */
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .upload-form button {
+          margin-left: 10px;
+          padding: 10px 20px;
+          background-color: #F6A189; /* Light Orange */
+          color: #FFFFFF; /* White */
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .file-info {
+          margin-top: 10px;
+          font-size: 1em;
+          color: #050402; /* Very Dark Brown */
+      }
+  </style>
+</head>
+<body>
+  <div class="header">
+      <div class="left-logo">
+          <img src="{{ url_for('logo', filename='CGDT_logo.png') }}" alt="CGDT Logo">
+      </div>
+      <div class="title">
+          COW ESTROUS MONITORING INDEX
+      </div>
+      <div class="right-logo">
+          <img src="{{ url_for('logo', filename='Neer_Interactives_logo.png') }}" alt="Neer Interactives Logo">
+      </div>
+  </div>
+  <div class="content">
+      <div class="upload-form">
+          <form method="post" enctype="multipart/form-data">
+              <label for="file">Choose a file</label>
+              <input type="file" name="file" id="file">
+              <button type="submit">Upload</button>
+          </form>
+          {% if filename %}
+          <div class="file-info">
+              Uploaded file: {{ filename }}
+          </div>
+          {% endif %}
+      </div>
+      <div class="image-container">
+          <div class="image-frame">
+              <label for="uploadedImage">Uploaded Image</label>
+              {% if filename %}
+                  {% if filename.lower().endswith(('png', 'jpg', 'jpeg')) %}
+                  <img id="uploadedImage" src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded Image">
+                  {% else %}
+                  <video id="uploadedImage" controls>
+                      <source src="{{ url_for('display_image', filename=filename) }}" type="video/mp4">
+                  </video>
+                  {% endif %}
+              {% else %}
+              <img id="uploadedImage" src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Uploaded Image">
+              {% endif %}
+          </div>
+          <div class="image-frame">
+              <label for="processedImage">Processed Image</label>
+              {% if result_filename %}
+                  {% if result_filename.lower().endswith(('png', 'jpg', 'jpeg')) %}
+                  <img id="processedImage" src="{{ url_for('display_image', filename=result_filename) }}" alt="Processed Image">
+                  {% else %}
+                  <video id="processedImage" controls>
+                      <source src="{{ url_for('display_image', filename=result_filename) }}" type="video/mp4">
+                  </video>
+                  {% endif %}
+              {% else %}
+              <img id="processedImage" src="{{ url_for('static', filename='images/placeholder2.jpg') }}" alt="Processed Image">
+              {% endif %}
+          </div>
+      </div>
+  </div>
+</body>
+</html>
