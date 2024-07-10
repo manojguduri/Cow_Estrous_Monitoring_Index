@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Importance of Estrous Identification</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #E6F4F1; /* Light Cyan */
+          color: #050402; /* Very Dark Brown */
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background-color: #F2CCB7; /* Light Peach */
+      }
+
+      .header .left-logo img {
+          width: 100px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .right-logo img {
+          width: 200px;
+          padding-left: 20px;
+          padding-right: 20px; /* Adjust as necessary */
+      }
+
+      .header .title {
+          flex: 1;
+          text-align: center;
+          font-size: 2em;
+          font-weight: bold;
+          color: #FFFFFF; /* White */
+      }
+
+      .content {
+          width: 80%;
+          max-width: 1200px;
+          margin-top: 20px;
+          display: flex;
+          align-items: flex-start;
+      }
+
+      .text-content {
+          flex: 1;
+          padding-right: 20px;
+          width: 65%; /* Adjusted width */
+      }
+
+      .text-content h1 {
+          font-size: 2em;
+          color: #F6A189; /* Light Orange */
+      }
+
+      .text-content p {
+          font-size: 1.2em;
+          line-height: 1.6;
+      }
+
+      .image-content {
+          padding-top: 100px;
+          padding-left: 20px; /* Adjusted padding */
+          flex: 1;
+          display: flex;
+          justify-content: flex-start; /* Align to the start */
+          align-items: center; /* Center vertically */
+          width: 35%; /* Adjusted width */
+      }
+
+      .image-content img {
+          max-width: 100%; /* Make sure image doesn't exceed its container */
+          max-height: 100%; /* Make sure image doesn't exceed its container */
+          object-fit: cover; /* Cover the entire container */
+          border-radius: 15px; /* Rounded edges */
+      }
+  </style>
+</head>
+<body>
+  <div class="header">
+      <div class="left-logo">
+          <img src="{{ url_for('static', filename='logos/CGDT_logo.png') }}" alt="CGDT Logo">
+      </div>
+      <div class="title">
+          IMPORTANCE OF ESTROUS IDENTIFICATION
+      </div>
+      <div class="right-logo">
+          <img src="{{ url_for('static', filename='logos/Neer_Interactives_logo.png') }}" alt="Neer Interactives Logo">
+      </div>
+  </div>
+  <div class="content">
+      <div class="text-content">
+          <h1>Importance of Estrous Identification</h1>
+          <p>The "Cow Estrous Monitoring Index" project aims to develop an advanced solution for monitoring and identifying the estrous cycle in cattle using Geographic Information System (GIS) and Artificial Intelligence (AI). The project addresses a critical challenge in cattle farming, where timely and accurate detection of the estrous cycle is essential for successful artificial insemination. This, in turn, helps in improving milk yield and ensuring the health of the livestock by preventing the spread of zoonotic diseases such as Brucellosis.</p>
+          <p>Brucellosis is a zoonotic disease caused by bacteria of the genus Brucella. In cattle, it primarily affects reproductive health, leading to decreased fertility, abortions, and reduced milk production. Moreover, brucellosis poses a significant threat to human health, as it can be transmitted to humans through consumption of contaminated dairy products or direct contact with infected animals. This underscores the importance of preventive measures, such as artificial insemination, to minimize the risk of disease transmission and ensure both animal and human welfare.</p>
+      </div>
+      <div class="image-content">
+          <img src="{{ url_for('static', filename='images/2.jpeg') }}" alt="Estrous Identification">
+      </div>
+  </div>
+</body>
+</html>
